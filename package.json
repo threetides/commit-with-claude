@@ -2,13 +2,18 @@
   "name": "commit-with-claude",
   "displayName": "Commit with Claude",
   "description": "Consistent, style-locked commit messages from the Claude Code you are already signed in to.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "threetides",
   "license": "MIT",
+  "pricing": "Free",
   "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/threetides/commit-with-claude"
+  },
+  "homepage": "https://github.com/threetides/commit-with-claude#readme",
+  "bugs": {
+    "url": "https://github.com/threetides/commit-with-claude/issues"
   },
   "engines": {
     "vscode": "^1.100.0"
@@ -229,7 +234,7 @@
     "watch": "tsc -watch -p ./",
     "test": "bun test",
     "package": "bunx @vscode/vsce package --no-dependencies",
-    "install-local": "bun run package && code --install-extension commit-with-claude-1.0.0.vsix --force"
+    "install-local": "bun run package && code --install-extension commit-with-claude-1.0.1.vsix --force"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

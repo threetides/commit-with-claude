@@ -1,0 +1,16 @@
+name: Feature request
+description: Suggest a style, setting, or behaviour.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: Describe the situation, not the solution. "I want my team's Jira key in the footer" beats "add a footer setting".
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: If you have a concrete idea, sketch it. Example messages help.

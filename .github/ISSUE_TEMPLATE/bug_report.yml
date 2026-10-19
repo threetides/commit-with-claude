@@ -1,0 +1,32 @@
+name: Bug report
+description: Something doesn't work as described.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Output channel
+      description: Run "Commit with Claude: Show Log" and paste the relevant lines. Enable `commitWithClaude.debug` first if the problem is the generated message itself.
+      render: text
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Extension, VS Code, and `claude --version`
+      placeholder: "1.0.0 · VS Code 1.142 · Claude Code 2.1.303"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options: [macOS, Linux, Windows]
+    validations:
+      required: true
