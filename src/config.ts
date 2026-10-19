@@ -17,7 +17,7 @@ export interface Config {
   debug: boolean;
 }
 
-export const SECTION = "claudeCommit";
+export const SECTION = "commitWithClaude";
 
 export function readConfig(scope?: vscode.ConfigurationScope): Config {
   const c = vscode.workspace.getConfiguration(SECTION, scope);

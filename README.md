@@ -23,7 +23,7 @@ Most commit message extensions have two problems: the output format drifts from 
 2. Click the sparkle in the Source Control title bar, or run **Commit with Claude: Generate Commit Message**.
 3. Read the message, edit if you like, commit.
 
-Open the **Commit with Claude** panel in the activity bar to pick a style and a model. Both choices are saved in your user settings, so they follow you across projects. If a repository sets `claudeCommit.style` in its workspace settings, the panel shows that and edits the workspace value instead.
+Open the **Commit with Claude** panel in the activity bar to pick a style and a model. Both choices are saved in your user settings, so they follow you across projects. If a repository sets `commitWithClaude.style` in its workspace settings, the panel shows that and edits the workspace value instead.
 
 ## Styles
 
@@ -39,7 +39,7 @@ Open the **Commit with Claude** panel in the activity bar to pick a style and a 
 ## What the model sees
 
 - The diff of your staged changes, or unstaged plus untracked changes if nothing is staged.
-- Lockfiles, minified bundles, source maps, snapshots and files marked `linguist-generated` or `-diff` in `.gitattributes` are replaced by a one-line summary with line counts. Add your own patterns with `claudeCommit.ignoreGlobs`.
+- Lockfiles, minified bundles, source maps, snapshots and files marked `linguist-generated` or `-diff` in `.gitattributes` are replaced by a one-line summary with line counts. Add your own patterns with `commitWithClaude.ignoreGlobs`.
 - Your last 12 commit subjects, so scopes and vocabulary match what the repository already uses.
 - The branch name.
 
@@ -49,19 +49,19 @@ Nothing is sent anywhere except through your own Claude Code CLI session.
 
 | Setting | Default | What it does |
 |---|---|---|
-| `claudeCommit.style` | `conventional` | Commit style. Set per workspace to enforce a convention. |
-| `claudeCommit.model` | `""` (Default) | Model id, or empty to follow Claude Code's current model. |
-| `claudeCommit.effort` | `low` | Effort level. Low was indistinguishable in quality for this task. |
-| `claudeCommit.bodyMode` | `auto` | `auto`, `always` or `never` include a body. |
-| `claudeCommit.language` | `English` | Language of the message. |
-| `claudeCommit.extraInstructions` | `""` | Extra rules appended to the prompt. |
-| `claudeCommit.recentCommitExamples` | `12` | Recent subjects shown to the model. 0 disables. |
-| `claudeCommit.ignoreGlobs` | `[]` | Additional files to summarise instead of include. |
-| `claudeCommit.maxFileDiffChars` | `12000` | Per-file diff cap. |
-| `claudeCommit.maxTotalDiffChars` | `80000` | Total diff cap. |
-| `claudeCommit.claudePath` | `""` | Path to `claude` if auto-detection fails. |
-| `claudeCommit.timeoutSeconds` | `90` | Give up after this long. |
-| `claudeCommit.debug` | `false` | Log prompts and raw replies to the output channel. |
+| `commitWithClaude.style` | `conventional` | Commit style. Set per workspace to enforce a convention. |
+| `commitWithClaude.model` | `""` (Default) | Model id, or empty to follow Claude Code's current model. |
+| `commitWithClaude.effort` | `low` | Effort level. Low was indistinguishable in quality for this task. |
+| `commitWithClaude.bodyMode` | `auto` | `auto`, `always` or `never` include a body. |
+| `commitWithClaude.language` | `English` | Language of the message. |
+| `commitWithClaude.extraInstructions` | `""` | Extra rules appended to the prompt. |
+| `commitWithClaude.recentCommitExamples` | `12` | Recent subjects shown to the model. 0 disables. |
+| `commitWithClaude.ignoreGlobs` | `[]` | Additional files to summarise instead of include. |
+| `commitWithClaude.maxFileDiffChars` | `12000` | Per-file diff cap. |
+| `commitWithClaude.maxTotalDiffChars` | `80000` | Total diff cap. |
+| `commitWithClaude.claudePath` | `""` | Path to `claude` if auto-detection fails. |
+| `commitWithClaude.timeoutSeconds` | `90` | Give up after this long. |
+| `commitWithClaude.debug` | `false` | Log prompts and raw replies to the output channel. |
 
 ## How it works
 
@@ -81,7 +81,7 @@ The model list comes from `~/.claude/cache/model-catalog/`, which Claude Code re
 bun install
 bun run build        # tsc
 bun test             # unit tests for styles and glob matching
-bun run package      # builds claude-commit-<version>.vsix
+bun run package      # builds commit-with-claude-<version>.vsix
 bun run install-local
 ```
 

@@ -102,7 +102,7 @@ export async function resolveClaudePath(customPath: string | undefined): Promise
   if (fromShell && (await isExecutable(fromShell))) return (cachedPath = fromShell);
 
   throw new ClaudeError(
-    "Could not find the claude executable. Install Claude Code, or set claudeCommit.claudePath to its location.",
+    "Could not find the claude executable. Install Claude Code, or set commitWithClaude.claudePath to its location.",
   );
 }
 

@@ -186,7 +186,7 @@ export async function collectDiff(cwd: string, opts: DiffOptions): Promise<DiffR
 
   const attrs = await readAttributes(cwd, all);
   const reasonFor = (p: string): string | undefined => {
-    if (opts.ignoreGlobs.length && matchesAny(p, opts.ignoreGlobs)) return "matches claudeCommit.ignoreGlobs";
+    if (opts.ignoreGlobs.length && matchesAny(p, opts.ignoreGlobs)) return "matches commitWithClaude.ignoreGlobs";
     if (matchesAny(p, BUILTIN_IGNORE_GLOBS)) return "lockfile or generated file";
     const a = attrs.get(p);
     if (a?.generated) return "marked linguist-generated in .gitattributes";

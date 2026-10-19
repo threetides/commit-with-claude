@@ -32,7 +32,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
   let running = false;
   context.subscriptions.push(
-    vscode.commands.registerCommand("claudeCommit.generate", async (arg?: unknown) => {
+    vscode.commands.registerCommand("commitWithClaude.generate", async (arg?: unknown) => {
       if (running) {
         void vscode.window.showInformationMessage("Commit with Claude is already generating a message.");
         return;
@@ -44,14 +44,14 @@ export function activate(context: vscode.ExtensionContext): void {
         running = false;
       }
     }),
-    vscode.commands.registerCommand("claudeCommit.openSettings", () =>
-      vscode.commands.executeCommand("workbench.action.openSettings", "@ext:threetides.claude-commit"),
+    vscode.commands.registerCommand("commitWithClaude.openSettings", () =>
+      vscode.commands.executeCommand("workbench.action.openSettings", "@ext:threetides.commit-with-claude"),
     ),
-    vscode.commands.registerCommand("claudeCommit.refreshModels", () => {
+    vscode.commands.registerCommand("commitWithClaude.refreshModels", () => {
       const info = catalog.refresh();
       void vscode.window.showInformationMessage(`Commit with Claude: ${info.models.length} models loaded from ${info.source === "catalog" ? "Claude Code's catalog" : "the fallback list"}.`);
     }),
-    vscode.commands.registerCommand("claudeCommit.showLog", () => log.show()),
+    vscode.commands.registerCommand("commitWithClaude.showLog", () => log.show()),
   );
 
   log.info("Commit with Claude activated");

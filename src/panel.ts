@@ -12,7 +12,7 @@ export interface LastRun {
 }
 
 export class PanelProvider implements vscode.WebviewViewProvider {
-  static readonly viewId = "claudeCommit.panel";
+  static readonly viewId = "commitWithClaude.panel";
   private view?: vscode.WebviewView;
   private lastRun?: LastRun;
   private status?: string;
@@ -79,10 +79,10 @@ export class PanelProvider implements vscode.WebviewViewProvider {
         break;
       }
       case "generate":
-        await vscode.commands.executeCommand("claudeCommit.generate");
+        await vscode.commands.executeCommand("commitWithClaude.generate");
         break;
       case "openSettings":
-        await vscode.commands.executeCommand("workbench.action.openSettings", "@ext:threetides.claude-commit");
+        await vscode.commands.executeCommand("workbench.action.openSettings", "@ext:threetides.commit-with-claude");
         break;
       case "refreshModels":
         this.catalog.refresh();
