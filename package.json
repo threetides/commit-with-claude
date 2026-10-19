@@ -8,7 +8,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/threetides/claude-commit-vscode"
+    "url": "https://github.com/threetides/commit-with-claude"
   },
   "engines": {
     "vscode": "^1.100.0"
