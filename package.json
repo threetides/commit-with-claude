@@ -2,7 +2,7 @@
   "name": "commit-with-claude",
   "displayName": "Commit with Claude",
   "description": "Consistent, style-locked commit messages from the Claude Code you are already signed in to.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "publisher": "threetides",
   "license": "MIT",
   "private": true,
@@ -229,7 +229,7 @@
     "watch": "tsc -watch -p ./",
     "test": "bun test",
     "package": "bunx @vscode/vsce package --no-dependencies",
-    "install-local": "bun run package && code --install-extension commit-with-claude-0.1.0.vsix --force"
+    "install-local": "bun run package && code --install-extension commit-with-claude-1.0.0.vsix --force"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
