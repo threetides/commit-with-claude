@@ -5,7 +5,7 @@ function ts(): string {
 }
 
 export class Logger implements vscode.Disposable {
-  private readonly channel = vscode.window.createOutputChannel("Claude Commit");
+  private readonly channel = vscode.window.createOutputChannel("Commit with Claude");
   debugEnabled = false;
 
   info(msg: string): void {

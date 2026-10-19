@@ -34,7 +34,7 @@ export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(
     vscode.commands.registerCommand("claudeCommit.generate", async (arg?: unknown) => {
       if (running) {
-        void vscode.window.showInformationMessage("Claude Commit is already generating a message.");
+        void vscode.window.showInformationMessage("Commit with Claude is already generating a message.");
         return;
       }
       running = true;
@@ -49,12 +49,12 @@ export function activate(context: vscode.ExtensionContext): void {
     ),
     vscode.commands.registerCommand("claudeCommit.refreshModels", () => {
       const info = catalog.refresh();
-      void vscode.window.showInformationMessage(`Claude Commit: ${info.models.length} models loaded from ${info.source === "catalog" ? "Claude Code's catalog" : "the fallback list"}.`);
+      void vscode.window.showInformationMessage(`Commit with Claude: ${info.models.length} models loaded from ${info.source === "catalog" ? "Claude Code's catalog" : "the fallback list"}.`);
     }),
     vscode.commands.registerCommand("claudeCommit.showLog", () => log.show()),
   );
 
-  log.info("Claude Commit activated");
+  log.info("Commit with Claude activated");
 }
 
 export function deactivate(): void {
@@ -70,7 +70,7 @@ interface Deps {
 async function generate(arg: unknown, { log, catalog, panel }: Deps): Promise<void> {
   const gitApi = getGitApi();
   if (!gitApi) {
-    void vscode.window.showErrorMessage("Claude Commit: the built-in Git extension is not available.");
+    void vscode.window.showErrorMessage("Commit with Claude: the built-in Git extension is not available.");
     return;
   }
   const repo = await pickRepository(gitApi, arg);
@@ -89,7 +89,7 @@ async function generate(arg: unknown, { log, catalog, panel }: Deps): Promise<vo
 
   try {
     const message = await vscode.window.withProgress(
-      { location: vscode.ProgressLocation.Notification, title: "Claude Commit", cancellable: true },
+      { location: vscode.ProgressLocation.Notification, title: "Commit with Claude", cancellable: true },
       async (progress, token) => {
         progress.report({ message: "Collecting changes…" });
         const claudePath = await resolveClaudePath(cfg.claudePath);
@@ -169,13 +169,13 @@ async function generate(arg: unknown, { log, catalog, panel }: Deps): Promise<vo
       return;
     }
     if (err instanceof NoChangesError) {
-      void vscode.window.showWarningMessage(`Claude Commit: ${err.message}`);
+      void vscode.window.showWarningMessage(`Commit with Claude: ${err.message}`);
       return;
     }
     const msg = err instanceof Error ? err.message : String(err);
     log.error(msg);
     if (err instanceof ClaudeError && err.detail) log.error(err.detail);
-    const action = await vscode.window.showErrorMessage(`Claude Commit: ${msg}`, "Show Log");
+    const action = await vscode.window.showErrorMessage(`Commit with Claude: ${msg}`, "Show Log");
     if (action === "Show Log") log.show();
   } finally {
     panel.setStatus(undefined);
@@ -194,7 +194,7 @@ function uriFromArg(arg: unknown): vscode.Uri | undefined {
 async function pickRepository(gitApi: GitAPI, arg: unknown): Promise<Repository | undefined> {
   const repos = gitApi.repositories;
   if (!repos.length) {
-    void vscode.window.showErrorMessage("Claude Commit: no Git repository is open.");
+    void vscode.window.showErrorMessage("Commit with Claude: no Git repository is open.");
     return undefined;
   }
   const uri = uriFromArg(arg);

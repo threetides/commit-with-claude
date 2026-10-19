@@ -1,4 +1,4 @@
-# Claude Commit
+# Commit with Claude
 
 Consistent, style-locked commit messages from the Claude Code you are already signed in to.
 
@@ -6,7 +6,7 @@ A sparkle button in the Source Control title bar reads your changes, asks Claude
 
 ## Why another one
 
-Most commit message extensions have two problems: the output format drifts from one message to the next, and you can't pick the model. Claude Commit fixes both.
+Most commit message extensions have two problems: the output format drifts from one message to the next, and you can't pick the model. Commit with Claude fixes both.
 
 - **Styles are enforced, not suggested.** Each style is a JSON schema the model has to fill plus a renderer that lays the fields out. The model decides content, the code decides format. `feat(scope): subject` is always lowercase, bullets always use `-`, the 50/72 style never exceeds 50 characters in the subject.
 - **The model list is Claude Code's own.** The dropdown is read from the local model catalog Claude Code keeps for its `/model` picker. "Default" uses whatever Claude Code is set to right now, so the two never disagree.
@@ -20,10 +20,10 @@ Most commit message extensions have two problems: the output format drifts from 
 ## Use
 
 1. Make changes. Stage them if you want; unstaged and untracked files are used when nothing is staged.
-2. Click the sparkle in the Source Control title bar, or run **Claude Commit: Generate Commit Message**.
+2. Click the sparkle in the Source Control title bar, or run **Commit with Claude: Generate Commit Message**.
 3. Read the message, edit if you like, commit.
 
-Open the **Claude Commit** panel in the activity bar to pick a style and a model. Both choices are saved in your user settings, so they follow you across projects. If a repository sets `claudeCommit.style` in its workspace settings, the panel shows that and edits the workspace value instead.
+Open the **Commit with Claude** panel in the activity bar to pick a style and a model. Both choices are saved in your user settings, so they follow you across projects. If a repository sets `claudeCommit.style` in its workspace settings, the panel shows that and edits the workspace value instead.
 
 ## Styles
 

@@ -1,6 +1,6 @@
 {
   "name": "claude-commit",
-  "displayName": "Claude Commit",
+  "displayName": "Commit with Claude",
   "description": "Consistent, style-locked commit messages from the Claude Code you are already signed in to.",
   "version": "0.1.0",
   "publisher": "threetides",
@@ -40,25 +40,25 @@
       {
         "command": "claudeCommit.generate",
         "title": "Generate Commit Message",
-        "category": "Claude Commit",
+        "category": "Commit with Claude",
         "icon": "$(sparkle)"
       },
       {
         "command": "claudeCommit.openSettings",
         "title": "Open Settings",
-        "category": "Claude Commit",
+        "category": "Commit with Claude",
         "icon": "$(gear)"
       },
       {
         "command": "claudeCommit.refreshModels",
         "title": "Refresh Model List",
-        "category": "Claude Commit",
+        "category": "Commit with Claude",
         "icon": "$(refresh)"
       },
       {
         "command": "claudeCommit.showLog",
         "title": "Show Log",
-        "category": "Claude Commit"
+        "category": "Commit with Claude"
       }
     ],
     "menus": {
@@ -86,7 +86,7 @@
       "activitybar": [
         {
           "id": "claudeCommit",
-          "title": "Claude Commit",
+          "title": "Commit with Claude",
           "icon": "resources/sparkle.svg"
         }
       ]
@@ -98,12 +98,12 @@
           "id": "claudeCommit.panel",
           "name": "Commit Style",
           "icon": "resources/sparkle.svg",
-          "contextualTitle": "Claude Commit"
+          "contextualTitle": "Commit with Claude"
         }
       ]
     },
     "configuration": {
-      "title": "Claude Commit",
+      "title": "Commit with Claude",
       "properties": {
         "claudeCommit.style": {
           "type": "string",
@@ -218,7 +218,7 @@
           "type": "boolean",
           "scope": "window",
           "default": false,
-          "description": "Write prompts and raw responses to the Claude Commit output channel."
+          "description": "Write prompts and raw responses to the Commit with Claude output channel."
         }
       }
     }
