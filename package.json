@@ -1,0 +1,235 @@
+{
+  "name": "claude-commit",
+  "displayName": "Claude Commit",
+  "description": "Consistent, style-locked commit messages from the Claude Code you are already signed in to.",
+  "version": "0.1.0",
+  "publisher": "threetides",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/threetides/claude-commit-vscode"
+  },
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "SCM Providers",
+    "AI"
+  ],
+  "keywords": [
+    "git",
+    "commit",
+    "claude",
+    "claude code",
+    "conventional commits",
+    "gitmoji"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "extensionDependencies": [
+    "vscode.git"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeCommit.generate",
+        "title": "Generate Commit Message",
+        "category": "Claude Commit",
+        "icon": "$(sparkle)"
+      },
+      {
+        "command": "claudeCommit.openSettings",
+        "title": "Open Settings",
+        "category": "Claude Commit",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "claudeCommit.refreshModels",
+        "title": "Refresh Model List",
+        "category": "Claude Commit",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "claudeCommit.showLog",
+        "title": "Show Log",
+        "category": "Claude Commit"
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "claudeCommit.generate",
+          "when": "scmProvider == git",
+          "group": "navigation@1"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "claudeCommit.refreshModels",
+          "when": "view == claudeCommit.panel",
+          "group": "navigation@1"
+        },
+        {
+          "command": "claudeCommit.openSettings",
+          "when": "view == claudeCommit.panel",
+          "group": "navigation@2"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "claudeCommit",
+          "title": "Claude Commit",
+          "icon": "resources/sparkle.svg"
+        }
+      ]
+    },
+    "views": {
+      "claudeCommit": [
+        {
+          "type": "webview",
+          "id": "claudeCommit.panel",
+          "name": "Commit Style",
+          "icon": "resources/sparkle.svg",
+          "contextualTitle": "Claude Commit"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Claude Commit",
+      "properties": {
+        "claudeCommit.style": {
+          "type": "string",
+          "scope": "window",
+          "default": "conventional",
+          "enum": [
+            "conventional",
+            "conventional-scoped",
+            "angular",
+            "gitmoji",
+            "classic",
+            "plain"
+          ],
+          "enumDescriptions": [
+            "Conventional Commits: type(scope): subject, bullet body",
+            "Conventional Commits with a required scope",
+            "Angular convention: strict types, prose body explaining why",
+            "Gitmoji: emoji prefix, subject, bullet body",
+            "Classic 50/72: capitalised subject, prose body, no type prefix",
+            "One-liner: a single subject line, no body"
+          ],
+          "description": "Commit message style. Every generated message follows this style exactly. Set it in workspace settings to enforce a convention for one repository."
+        },
+        "claudeCommit.model": {
+          "type": "string",
+          "scope": "application",
+          "default": "",
+          "markdownDescription": "Model to use. Leave empty for **Default**, which uses whatever model Claude Code is currently set to. Otherwise a model id from Claude Code's picker, e.g. `claude-sonnet-5-5`."
+        },
+        "claudeCommit.effort": {
+          "type": "string",
+          "scope": "window",
+          "default": "low",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "description": "Effort level passed to Claude Code. Low is fast and was indistinguishable in quality for commit messages in testing."
+        },
+        "claudeCommit.bodyMode": {
+          "type": "string",
+          "scope": "window",
+          "default": "auto",
+          "enum": [
+            "auto",
+            "always",
+            "never"
+          ],
+          "enumDescriptions": [
+            "Add a body only when the subject alone does not explain the change",
+            "Always include a body",
+            "Subject line only"
+          ],
+          "description": "When to include a commit body below the subject line."
+        },
+        "claudeCommit.language": {
+          "type": "string",
+          "scope": "window",
+          "default": "English",
+          "description": "Language the commit message is written in."
+        },
+        "claudeCommit.extraInstructions": {
+          "type": "string",
+          "scope": "window",
+          "default": "",
+          "description": "Additional rules appended to the prompt, e.g. 'Reference the Jira key from the branch name in the footer'."
+        },
+        "claudeCommit.recentCommitExamples": {
+          "type": "number",
+          "scope": "window",
+          "default": 12,
+          "minimum": 0,
+          "maximum": 50,
+          "description": "How many recent commit subjects from the repository to show the model as style examples. 0 disables."
+        },
+        "claudeCommit.ignoreGlobs": {
+          "type": "array",
+          "scope": "window",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "markdownDescription": "Extra glob patterns whose diffs are replaced by a one-line summary. Lockfiles, minified bundles, source maps and snapshots are already excluded, as are files marked `linguist-generated` or `-diff` in `.gitattributes`."
+        },
+        "claudeCommit.maxFileDiffChars": {
+          "type": "number",
+          "scope": "window",
+          "default": 12000,
+          "description": "Per-file diff size limit in characters. Larger diffs are truncated with a marker."
+        },
+        "claudeCommit.maxTotalDiffChars": {
+          "type": "number",
+          "scope": "window",
+          "default": 80000,
+          "description": "Total diff size limit in characters. Files beyond the limit are summarised instead of included."
+        },
+        "claudeCommit.claudePath": {
+          "type": "string",
+          "scope": "machine",
+          "default": "",
+          "description": "Path to the claude executable. Leave empty to auto-detect."
+        },
+        "claudeCommit.timeoutSeconds": {
+          "type": "number",
+          "scope": "window",
+          "default": 90,
+          "minimum": 10,
+          "description": "Give up waiting for Claude after this many seconds."
+        },
+        "claudeCommit.debug": {
+          "type": "boolean",
+          "scope": "window",
+          "default": false,
+          "description": "Write prompts and raw responses to the Claude Commit output channel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "bun run build",
+    "build": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "bun test",
+    "package": "bunx @vscode/vsce package --no-dependencies",
+    "install-local": "bun run package && code --install-extension claude-commit-0.1.0.vsix --force"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.100.0",
+    "@vscode/vsce": "^3.0.0",
+    "typescript": "^5.6.0"
+  }
+}
