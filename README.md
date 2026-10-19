@@ -3,9 +3,9 @@
 </p>
 
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=threetides.commit-with-claude"><img alt="Marketplace version" src="https://img.shields.io/visual-studio-marketplace/v/threetides.commit-with-claude?label=Marketplace&color=0e639c"></a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=threetides.commit-with-claude"><img alt="Installs" src="https://img.shields.io/visual-studio-marketplace/i/threetides.commit-with-claude?color=0e639c"></a>
-  <a href="https://marketplace.visualstudio.com/items?itemName=threetides.commit-with-claude&ssr=false#review-details"><img alt="Rating" src="https://img.shields.io/visual-studio-marketplace/r/threetides.commit-with-claude?color=0e639c"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=threetides.commit-with-claude"><img alt="Latest release" src="https://img.shields.io/github/v/release/threetides/commit-with-claude?label=Marketplace&color=0e639c"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=threetides.commit-with-claude"><img alt="Installs" src="https://vsmarketplacebadges.dev/installs-short/threetides.commit-with-claude.svg?color=0e639c&label=installs"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=threetides.commit-with-claude&ssr=false#review-details"><img alt="Rating" src="https://vsmarketplacebadges.dev/rating-short/threetides.commit-with-claude.svg?color=0e639c&label=rating"></a>
   <a href="https://github.com/threetides/commit-with-claude/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/threetides/commit-with-claude/actions/workflows/ci.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green"></a>
 </p>
